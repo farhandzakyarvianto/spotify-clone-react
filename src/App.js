@@ -28,6 +28,20 @@ function App() {
                     user: user,
                 });
             });
+
+            spotify.getUserPlaylists().then((playlists) => {
+                dispatch({
+                    type: "SET_PLAYLISTS",
+                    playlists: playlists,
+                });
+            });
+
+            spotify.getPlaylist("37i9dQZEVXcL9LKFkkfXQ1").then((res) => {
+                dispatch({
+                    type: "SET_DISCOVER_WEEKLY",
+                    discover_weekly: res,
+                });
+            });
         }
     }, []);
 
